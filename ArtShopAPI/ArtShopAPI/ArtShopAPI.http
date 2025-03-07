@@ -1,0 +1,6 @@
+@ArtShopAPI_HostAddress = http://localhost:5111
+
+GET {{ArtShopAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

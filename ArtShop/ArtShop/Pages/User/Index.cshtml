@@ -1,0 +1,27 @@
+﻿@page
+@model ArtShop.Pages.User.IndexModel
+@{
+    ViewData["Title"] = "profile";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Art Store</h1>
+    <p>Get the best Art.</p>
+</div>
+<div class="container art">
+    @if (Model.arts.Count > 0)
+    {
+        @foreach (var art in Model.arts)
+        {
+            <div class="card">
+                <div style="height: 200px;">
+                    <img src="@art.Image">
+                </div>
+                <h3 style="height: 50px;">@art.Description</h3>
+                <p class="price">@art.Price</p>
+            </div>
+        }
+    }
+
+
+</div>

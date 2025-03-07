@@ -1,0 +1,30 @@
+﻿@page
+@model ArtShop.Pages.UploadArt.IndexModel
+@{
+}
+<h1>Upload New Art</h1>
+
+<!-- Display Message -->
+@if (!string.IsNullOrEmpty(Model.Message))
+{
+    <div class="message">@Model.Message</div>
+}
+<form method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="artInput.Description">Description</label>
+        <textarea asp-for="artInput.Description" name="des" class="form-control" rows="3"></textarea>
+    </div>
+    <div class="form-group">
+        <label asp-for="artInput.Price">Price</label>
+        <input asp-for="artInput.Price" name="price" type="number" step="0.01" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label >Image</label>
+        <input type="file"
+               id="files"
+               name="imageUpload"
+               accept="image/jpeg, image/png, image/jpg" />
+        <span class="text-danger"></span>
+    </div>
+    <button type="submit" asp-page-handler="Upload" class="btn btn-primary">Upload Art</button>
+</form>

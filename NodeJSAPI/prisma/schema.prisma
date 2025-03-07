@@ -1,0 +1,26 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlserver"
+  url      = env("DATABASE_URL")
+}
+
+model Art {
+  Id          Int     @id(map: "PK_Art") @default(autoincrement())
+  UserId      Int
+  Image       String  @db.VarChar(200)
+  Description String? @db.NVarChar(500)
+  Price       Float
+  User        User    @relation(fields: [UserId], references: [Id], onUpdate: NoAction, map: "FK_Art_User")
+}
+
+model User {
+  Id           Int    @id(map: "PK_User") @default(autoincrement())
+  Email        String @db.VarChar(50)
+  Username     String @db.VarChar(50)
+  PasswordHash String @db.VarChar(50)
+  Balance      Float
+  Art          Art[]
+}
